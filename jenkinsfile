@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Starting Maven build"'
+                sh 'mvn clean install'
+                sh 'echo "Maven build complete"'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'echo "Running tests"'
+                sh 'mvn test'
+            }
+        }
+        
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'echo "Deploying to production"'
+        //     }
+        // }
+    }
+}
